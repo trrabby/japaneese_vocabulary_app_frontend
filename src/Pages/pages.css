@@ -1,0 +1,129 @@
+.banner {
+    position: relative;
+    overflow: hidden;
+    background-image: url(../assets/3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position:fixed;
+    width: 100%;
+}
+
+.content-container {
+    z-index: 1;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    height: 100%;
+}
+
+/* .imageProfile::after {
+    transform: rotate(-20deg);
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgba(238, 236, 245, 0.37);
+    border-radius: 100px;
+    transition-duration: 1s;
+    top:15px;
+    left:100px;
+    width: 250px;
+    height: 580px;
+    
+}
+
+.imageProfile:hover:after {
+    transform: rotate(10deg);
+}
+
+.imageProfile::before {
+    transform: rotate(20deg);
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top:15px;
+    left:100px;
+    width: 250px;
+    height: 580px;
+    background: rgba(238, 236, 245, 0.37);
+    border-radius: 100px;
+    transition-duration: 1s;
+}
+.imageProfile:hover::before {
+    transform: rotate(-10deg);
+} */
+
+.projects {
+    background-image: url(../assets/7.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.AdminLogin {
+    background-image: url(../assets/6.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.AdminLogin label {
+    background-color: black;
+}
+
+.contacts {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    padding: 50px;
+    padding-top: 0px;
+}
+
+.btnOverProjects a {
+    border: 2px solid white;
+}
+
+@media screen and (max-width: 480px) {
+    .imageProfile::after {
+        transform: rotate(-20deg);
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: rgba(238, 236, 245, 0.37);
+        border-radius: 100px;
+        transition-duration: 1s;
+        top:150px;
+        left:80px;
+        width: 100px;
+        height: 280px;
+        /* border: 2px solid red; */
+        
+    }
+    
+    .imageProfile:hover:after {
+        transform: rotate(20deg);
+    }
+    
+    .imageProfile::before {
+        transform: rotate(20deg);
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top:150px;
+        left:80px;
+        width: 100px;
+        height: 280px;
+        background: rgba(238, 236, 245, 0.37);
+        border-radius: 100px;
+        transition-duration: 1s;
+    }
+    .imageProfile:hover::before {
+        transform: rotate(-20deg);
+    }
+}
