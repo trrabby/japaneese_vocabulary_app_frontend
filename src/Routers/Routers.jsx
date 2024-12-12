@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../Pages/ErrorPage";
 import { MainLayout } from "../Layout/MainLayout";
 import { LoginPage } from "../Pages/LoginPage";
-import { Lessons } from "../Pages/lesson/Lessons";
+import { LessonsPage } from "../Pages/lesson/Lessons";
+import { PrivateRoute } from "../Providers/PraivateRoute";
+import { LessonDetails } from "../Pages/lesson/LessonDetails";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +22,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/lessons",
-        element: <Lessons></Lessons>,
+        element: (
+          <PrivateRoute>
+            <LessonsPage></LessonsPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/lessons/:lesson_no",
+        element: (
+          <PrivateRoute>
+            <LessonDetails></LessonDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

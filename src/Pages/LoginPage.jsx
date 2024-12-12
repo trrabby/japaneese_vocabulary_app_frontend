@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -8,8 +7,11 @@ import { ContextApi } from "../Providers/ContextProvider";
 import { SectionHead } from "../Components/SectionHead";
 import { LoadingSpinner } from "../Components/LoadingSpinner";
 import { useAxiosSecure } from "../Components/Hooks/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const { loading, setLoading, setUser, setErr, err } = useContext(ContextApi);
   const [toggle, setToggle] = useState(false);
@@ -19,8 +21,6 @@ export const LoginPage = () => {
     reset,
     formState: { errors },
   } = useForm();
-
-  const navigate = useNavigate();
 
   const onSubmit = async (formInfo) => {
     // console.log(formInfo)
@@ -35,7 +35,7 @@ export const LoginPage = () => {
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
       toast.success("Login Successfully");
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
       setErr("");
       reset();
     } catch (err) {
@@ -45,53 +45,6 @@ export const LoginPage = () => {
       setLoading(false);
     }
   };
-
-  // const onSubmit = async (formInfo) => {
-  //   // console.log(formInfo)
-  //   setLoading(true);
-  //   const email = formInfo.email;
-  //   const password = parseInt(formInfo.pass);
-  //   try {
-  //     const { data } = await axiosCommon(`/users/${email}`);
-  //     const storedPassword = parseInt(data.data[0].password);
-  //     console.log(password, storedPassword);
-  //     if (password === storedPassword) {
-  //       console.log(data.data[0]);
-  //       setUser(data.data[0]);
-  //       console.log(user);
-  //       setLoading(false);
-  //       navigate("/");
-  //       toast.success("Login Successfully");
-  //       reset();
-  //     } else {
-  //       setErr("Please Check Back Your Given Information");
-  //       throw new Error("Wrong password");
-  //     }
-  //   } catch (err) {
-  //     setErr("Invalid User Info. Please Try Again");
-  //     toast.error("Information mismatched. Please check back.");
-  //     setLoading(false);
-  //     reset();
-  //   }
-
-  //   // login(email, password)
-  //   //   .then((userCredential) => {
-  //   //     const user = userCredential.user;
-  //   //     setUser(user);
-  //   //     setLoading(false);
-  //   //     navigate("/dashboard");
-  //   //     toast.success("Login Successfully");
-  //   //     reset();
-  //   //   })
-  //   //   .catch((error) => {
-  //   //     const errorCode = error.code;
-  //   //     const errorMessage = error.message;
-  //   //     console.log(errorCode, errorMessage);
-  //   //     setErr(errorMessage);
-  //   //     toast.error("Information mismatched. Please check back.");
-  //   //     setLoading(false);
-  //   //   });
-  // };
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center login">
@@ -177,14 +130,6 @@ export const LoginPage = () => {
                 {err && (
                   <p className="text-red-500 flex w-full text-xs">{err}</p>
                 )}
-
-                {/* {err &&
-
-                        <dir className='absolute bg-red-500 h-auto w-3/12 ml-[510px] mt-[-20px] p-2'>
-                            {err}0
-                        </dir>
-
-                    } */}
 
                 <button
                   className=" hover:bg-primary text-black hover:text-accent w-6/12 mx-auto p-3 rounded-xl bg-fourth duration-500"
