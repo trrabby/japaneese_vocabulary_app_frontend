@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useContext, useState } from "react";
@@ -7,7 +8,7 @@ import { ContextApi } from "../Providers/ContextProvider";
 import { SectionHead } from "../Components/SectionHead";
 import { LoadingSpinner } from "../Components/LoadingSpinner";
 import { useAxiosSecure } from "../Components/Hooks/useAxiosSecure";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
   const location = useLocation();
@@ -49,8 +50,8 @@ export const LoginPage = () => {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center login">
       <SectionHead
-        title={"Your IP is in danger!"}
-        special={"You are getting tracked. Leave this page soon."}
+        title={"Log in"}
+        special={"Enjoy our seamless vocabulary learning services"}
       ></SectionHead>
       <div className="flex flex-col lg:flex-row items-center justify-center text-center w-full">
         <div className="lg:w-6/12 rounded-lg mb-5 lg:mt-5 flex flex-col items-center justify-center text-center  ">
@@ -75,7 +76,7 @@ export const LoginPage = () => {
                     <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                   </svg>
                   <input
-                    className="text-white md:bg-slate-800 bg-black w-full p-3 rounded-lg"
+                    className="text-black w-full text-sm"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -104,7 +105,7 @@ export const LoginPage = () => {
                     </svg>
 
                     <input
-                      className="text-white md:bg-slate-800 bg-black w-full p-3 rounded-lg"
+                      className="text-black w-full text-sm"
                       type={toggle ? "text" : "password"}
                       placeholder="Password"
                       name="pass"
@@ -137,6 +138,14 @@ export const LoginPage = () => {
                 >
                   {loading ? <LoadingSpinner></LoadingSpinner> : "Get In"}
                 </button>
+                <Link
+                  to={"/register"}
+                  onClick={() => setErr(null)}
+                  className="text-sm text-primary font-extrabold text-left flex gap-2 w-auto "
+                >
+                  Don't Have an account?{" "}
+                  <span className="hover:text-accent text-black">Register</span>
+                </Link>
               </form>
             </div>
           </div>

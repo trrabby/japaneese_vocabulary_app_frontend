@@ -3,8 +3,9 @@ import { useAxiosSecure } from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../assets/groovyWalk.json";
-import { LessonWisVocabularies } from "../Vocabulary/LessonWisVocabularies";
+
 import { SectionHead } from "../../Components/SectionHead";
+import { LessonWisVocabularies } from "./LessonWisVocabularies";
 
 export const LessonDetails = () => {
   const { lesson_no } = useParams();

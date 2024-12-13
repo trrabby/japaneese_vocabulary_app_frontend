@@ -20,7 +20,7 @@ export const LessonsPage = () => {
   if (isLoading) {
     return <Lottie className="h-52" animationData={groovyWalkAnimation} />;
   }
-  console.log(lessons);
+  // console.log(lessons);
   return (
     <div>
       <SectionHead

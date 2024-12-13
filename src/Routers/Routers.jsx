@@ -5,6 +5,8 @@ import { LoginPage } from "../Pages/LoginPage";
 import { LessonsPage } from "../Pages/lesson/Lessons";
 import { PrivateRoute } from "../Providers/PraivateRoute";
 import { LessonDetails } from "../Pages/lesson/LessonDetails";
+import { Vocabularies } from "../Pages/Vocabulary/Vocabularies";
+import { Register } from "../Pages/Register";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,18 @@ export const router = createBrowserRouter([
             <LessonDetails></LessonDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/vocabularies",
+        element: (
+          <PrivateRoute>
+            <Vocabularies></Vocabularies>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

@@ -8,7 +8,6 @@ export const NavbarMd = () => {
   const { user, handleLogout } = useContext(ContextApi);
 
   const [theme, setTheme] = useState("light");
-  const savedTheme = localStorage.getItem("theme");
 
   const handleToggle = (e) => {
     const value = e.target.checked;
@@ -199,7 +198,9 @@ export const NavbarMd = () => {
           >
             <input
               onChange={handleToggle}
-              defaultChecked={savedTheme === "dark" ? true : false}
+              defaultChecked={
+                localStorage.getItem("theme") === "dark" ? true : false
+              }
               type="checkbox"
               id="AcceptConditions"
               className="peer sr-only"
