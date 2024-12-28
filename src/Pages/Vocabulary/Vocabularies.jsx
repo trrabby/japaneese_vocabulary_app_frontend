@@ -41,7 +41,7 @@ export const Vocabularies = () => {
     const pages = [...Array(meta?.totalPage).keys()]; // Create an array of page numbers
     setPages(pages);
   }, [meta]);
-
+  console.log(pages);
   const handlePrev = () => {
     if (currentPage > 1) {
       setCurrentPage(parseInt(currentPage) - 1);
@@ -112,7 +112,7 @@ export const Vocabularies = () => {
           </tbody>
         </table>
         {!isLoading && (
-          <div className="text-center bg-accent backdrop-blur-0 p-2 text-white flex gap-2 justify-center items-center">
+          <div className="text-center bg-accent backdrop-blur-0 p-2 text-black flex gap-2 justify-center items-center">
             <button
               onClick={handlePrev}
               className="bg-white text-black hover:bg-fourth duration-500 mr-3 px-3 rounded-full"
@@ -122,13 +122,16 @@ export const Vocabularies = () => {
             {pages &&
               pages.map((page, i) => {
                 const count = parseInt(page + 1);
+                // console.log(currentPage, count);
 
                 return (
                   <button
                     key={i}
                     onClick={() => setCurrentPage(count)}
-                    className={`bg-white text-black hover:bg-fourth duration-500 mr-3 px-2 rounded-full ${
-                      currentPage === count ? "bg-primary text-white" : ""
+                    className={` text-black hover:bg-fourth duration-500 mr-3 px-2 rounded-full ${
+                      currentPage === count
+                        ? "bg-primary text-black"
+                        : "bg-white"
                     }`}
                   >
                     {count}

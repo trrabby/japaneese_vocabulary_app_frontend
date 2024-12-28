@@ -15,6 +15,8 @@ import DashboardHome from "../Pages/Dashboard/Outlets/DashboardHome";
 import { AddLesson } from "../Pages/Dashboard/Outlets/AddLesson";
 import { AddVocabulary } from "../Pages/Dashboard/Outlets/AddVocabulary";
 import { Tutorials } from "../Pages/Tutorials/Tutorials";
+import { ManageItems } from "../Pages/Dashboard/Outlets/manageItems";
+import { UpdateVocabulary } from "../Pages/Dashboard/Outlets/UpdateVocabulary";
 
 export const router = createBrowserRouter([
   {
@@ -89,6 +91,14 @@ export const router = createBrowserRouter([
           {
             path: "addVocabulary",
             element: <AddVocabulary></AddVocabulary>,
+          },
+          {
+            path: "mngt",
+            element: <ManageItems></ManageItems>,
+          },
+          {
+            path: "updateVocabulary/:id",
+            element: <UpdateVocabulary></UpdateVocabulary>,
           },
         ],
       },

@@ -5,8 +5,26 @@ import { ContextApi } from "../../Providers/ContextProvider";
 
 export const DashboardAside = () => {
   // console.log(participantsRole)
-  const { user, isAsideOpen, setIsAsideOpen } = useContext(ContextApi);
-  const admin = user.role === "admin";
+  const { isAsideOpen, setIsAsideOpen } = useContext(ContextApi);
+
+  const dashboardLinks = [
+    {
+      path: "/profile",
+      name: "Profile",
+    },
+    {
+      path: "/dashboard/addLesson",
+      name: "Add Lesson",
+    },
+    {
+      path: "/dashboard/addVocabulary",
+      name: "Add Vocabulary",
+    },
+    {
+      path: "/dashboard/mngt",
+      name: "Mangage Items",
+    },
+  ];
 
   return (
     <div
@@ -14,55 +32,26 @@ export const DashboardAside = () => {
         isAsideOpen ? "translate-x-0" : "translate-x-[-300px]"
       }`}
     >
-      {admin && (
-        <div className="flex flex-col">
-          <NavLink
-            to={"profile"}
-            onClick={() => setIsAsideOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-extrabold p-2 text-right underline"
-                : "hover:text-white hover:underline p-2 font-bold text-right hover:duration-500 hover:bg-accent"
-            }
-          >
-            Profile
-          </NavLink>
-          <NavLink
-            to={"/dashboard/addLesson"}
-            onClick={() => setIsAsideOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-white underline font-extrabold p-2 text-right"
-                : "hover:text-white hover:underline p-2 font-bold text-right hover:duration-500 hover:bg-accent"
-            }
-          >
-            Add Lesson
-          </NavLink>
-          <NavLink
-            to={"/dashboard/addVocabulary"}
-            onClick={() => setIsAsideOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-white underline font-extrabold p-2 text-right"
-                : "hover:text-white hover:underline p-2 font-bold text-right hover:duration-500 hover:bg-accent"
-            }
-          >
-            Add Vocabulary
-          </NavLink>
-          <NavLink
-            to={"mngRegCamp"}
-            onClick={() => setIsAsideOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-white underline font-extrabold p-2 text-right"
-                : "hover:text-white hover:underline p-2 font-bold text-right hover:duration-500 hover:bg-accent"
-            }
-          >
-            Manage Registered Camp
-          </NavLink>{" "}
-          <hr />
-        </div>
-      )}
+      <div className="flex flex-col">
+        {dashboardLinks.map((link) => {
+          return (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              onClick={() => setIsAsideOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "font-extrabold p-2 text-right text-primary"
+                  : " hover:text-primary p-2 font-bold text-right hover:duration-500 hover:bg-accent"
+              }
+            >
+              {link.name}
+            </NavLink>
+          );
+        })}
+
+        <hr />
+      </div>
     </div>
   );
 };
