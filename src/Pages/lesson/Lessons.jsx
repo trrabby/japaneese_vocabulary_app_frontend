@@ -27,7 +27,7 @@ export const LessonsPage = () => {
         title={"Learn our easy understandable lessons"}
         para={"Learn with us and conquer the world"}
       ></SectionHead>
-      <div className="my-10 space-y-24">
+      <div className="space-y-24">
         <div
           data-aos="fade-up"
           data-aos-duration="1000"

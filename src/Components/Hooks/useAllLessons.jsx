@@ -4,13 +4,7 @@ import { useAxiosSecure } from "./useAxiosSecure";
 export const useAllLessons = () => {
   const axiosSecure = useAxiosSecure();
 
-  const {
-    data: lessons = [],
-    isLoading,
-    isError,
-    error,
-    refetch,
-  } = useQuery({
+  const { data: lessons = [] } = useQuery({
     queryKey: ["projects"],
     queryFn: () => lessonsData(),
   });
@@ -20,5 +14,5 @@ export const useAllLessons = () => {
     return data;
   };
 
-  return { lessons, isLoading, isError, error, refetch };
+  return lessons.data;
 };

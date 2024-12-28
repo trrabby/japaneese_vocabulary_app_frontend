@@ -48,14 +48,18 @@ export const NavbarMd = () => {
       path: "/vocabularies",
       name: "Vocabularies",
     },
+    {
+      path: "/tutorials",
+      name: "Tutorials",
+    },
   ];
   return (
-    <div className="flex items-center bg-accent text-black sticky shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-30 w-full">
+    <div className="flex items-center bg-accent text-black shadow-sm shadow-[#4d4d00] rounded-b-2xl justify-center z-30 w-full">
       <div className="navbar  flex justify-between items-center">
         <div className="flex flex-row lg:flex-row justify-between items-center lg:flex-1">
           <div>
             <p className="text-primary text-3xl font-extrabold p-2 px-4">
-              <span className="text-cyan-500 text-4xl">Tokyo</span>Bangla
+              <span className="text-cyan-500 text-4xl">Tokyo</span> Bangla
             </p>
           </div>
           {/* Menu */}
@@ -165,10 +169,14 @@ export const NavbarMd = () => {
                 )}
               </li>
               <li>
-                <a>
-                  Dashboard{" "}
-                  <span className="badge">{user?.role || "No Role Found"}</span>
-                </a>
+                {user?.role === "admin" && (
+                  <a href="/dashboard">
+                    Dashboard
+                    <span className="badge">
+                      {user?.role || "No Role Found"}
+                    </span>
+                  </a>
+                )}
               </li>
 
               {user && (

@@ -8,6 +8,7 @@ AOS.init();
 import "animate.css";
 import { ContextApi } from "../Providers/ContextProvider";
 import { Navbar } from "../Components/Navbar/Navbar";
+import { Footer } from "../Pages/Footer";
 
 export const MainLayout = () => {
   const { onTouchStart, onTouchMove, onTouchEnd } = useContext(ContextApi);
@@ -19,8 +20,13 @@ export const MainLayout = () => {
       onTouchEnd={onTouchEnd}
       className="w-full container mx-auto"
     >
-      <Navbar></Navbar>
-      <Outlet></Outlet>
+      <div className="sticky top-0 z-50">
+        <Navbar></Navbar>
+      </div>
+      <div className="pb-5 min-h-screen">
+        <Outlet></Outlet>
+      </div>
+      {window.location.pathname === "/" && <Footer></Footer>}
     </div>
   );
 };

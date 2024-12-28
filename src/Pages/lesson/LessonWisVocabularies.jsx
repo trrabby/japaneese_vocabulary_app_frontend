@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
 import { AiTwotoneSound } from "react-icons/ai";
 import { SectionHead } from "../../Components/SectionHead";
+import { pronounceWord } from "../../utils/wordPronouncer";
 
 export const LessonWisVocabularies = ({ data }) => {
-  function pronounceWord(wordToSpeetch) {
-    const utterance = new SpeechSynthesisUtterance(wordToSpeetch);
-    utterance.lang = "ja-JP"; // Japanese
-    window.speechSynthesis.speak(utterance);
-  }
   const { word, meaning, pronunciation, when_to_say } = data;
   return (
     <div>
@@ -24,7 +20,7 @@ export const LessonWisVocabularies = ({ data }) => {
                 Word Meaning: {meaning}
               </p>
               <p className="mt-2 flex items-center gap-4 line-clamp-3 text-xl text-gray-700">
-                Pronunciation:
+                Pronunciation: {pronunciation}
                 <span
                   onClick={() => pronounceWord(pronunciation)}
                   className="p-2 border rounded-full hover:text-primary hover:bg-accent cursor-pointer"

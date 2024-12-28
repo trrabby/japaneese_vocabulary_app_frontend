@@ -6,13 +6,13 @@ import groovyWalkAnimation from "../assets/groovyWalk.json";
 import { ContextApi } from "./ContextProvider";
 
 export const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(ContextApi);
+  const { user, userLoading } = useContext(ContextApi);
   const location = useLocation();
 
   if (user) {
     return children;
   } else {
-    if (loading) {
+    if (userLoading) {
       return <Lottie className="h-52" animationData={groovyWalkAnimation} />;
     }
 
